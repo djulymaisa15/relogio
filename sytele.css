@@ -29,15 +29,15 @@
         }
 
         .relogio .horas {
-            color: #C71585; /* Cor das horas (amarelo) */
+            color: #C71585; /* Cor das horas (MediumVioletRed) */
         }
 
         .relogio .minutos {
-            color:#C71585; /* Cor dos minutos (azul claro) */
+            color:#C71585; /* Cor dos minutos (MediumVioletRed) */
         }
 
         .relogio .segundos {
-            color:#C71585; /* Cor dos segundos (vermelho) */
+            color:#C71585; /* Cor dos segundos (MediumVioletRed) */
         }
     </style>
 </head>
