@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relógio Digital</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+function atualizarRelogio() {
+    const agora = new Date();
 
-    <div class="relogio-container">
-        <div id="relogio"></div>
-    </div>
+    const hora = agora.getHours().toString().padStart(2, '0');
+    const minuto = agora.getMinutes().toString().padStart(2, '0');
+    const segundo = agora.getSeconds().toString().padStart(2, '0');
 
-    <script src="script.js"></script>
-</body>
-</html>
+    document.getElementById('hora').textContent = hora;
+    document.getElementById('minuto').textContent = minuto;
+    document.getElementById('segundo').textContent = segundo;
+
+    const dataAtual = agora.toLocaleDateString('pt-BR', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    document.getElementById('data').textContent = dataAtual;
+}
+
+setInterval(atualizarRelogio, 1000);
+atualizarRelogio();
