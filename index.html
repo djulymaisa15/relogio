@@ -4,17 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relógio Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #2c3e50; /* Cor de fundo escura */
+            color: #ecf0f1; /* Cor do texto branca/clara */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .relogio {
+            font-size: 5rem;
+            font-weight: bold;
+            padding: 20px 40px;
+            border-radius: 10px;
+            background-color: #34495e; /* Cor do painel do relógio */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            letter-spacing: 5px;
+        }
+
+        .data {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #bdc3c7; /* Cor da data */
+        }
+    </style>
 </head>
 <body>
 
-    <div class="relogio">
-        <div id="hora" class="numero">00</div>
-        <div id="minuto" class="numero">00</div>
-        <div id="segundo" class="numero">00</div>
-    </div>
-    <p id="data"></p>
+    <div class="relogio" id="relogio"></div>
+    <div class="data" id="data"></div>
 
-    <script src="script.js"></script>
+    <script>
+        function atualizarRelogio() {
+            const relogioDiv = document.getElementById('relogio');
+            const dataDiv = document.getElementById('data');
+            const agora = new Date();
+
+            // Formata a hora
+            const horas = String(agora.getHours()).padStart(2, '0');
+            const minutos = String(agora.getMinutes()).padStart(2, '0');
+            const segundos = String(agora.getSeconds()).padStart(2, '0');
+            relogioDiv.textContent = `${horas}:${minutos}:${segundos}`;
+
+            // Formata a data
+            const opcoesData = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dataFormatada = agora.toLocaleDateString('pt-BR', opcoesData);
+            dataDiv.textContent = dataFormatada;
+        }
+
+        // Chama a função para atualizar o relógio a cada segundo
+        setInterval(atualizarRelogio, 1000);
+
+        // Chama a função uma vez ao carregar a página para evitar um atraso inicial
+        atualizarRelogio();
+    </script>
+
 </body>
 </html>
